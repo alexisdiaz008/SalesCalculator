@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Industries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Name: <%= select_tag "Industries", options_for_select(@industry_names), id: "industry_names" %></th>
+      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Avg. Conversion rate</th>
+      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @industries.each do |industry| %>
+      <tr id="<%= industry.name %>" class="hidden">
+        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= industry.name %></td>
+        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= industry.conversion_rate %></td>
+        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= link_to 'Show', industry %><%= link_to ' Edit', edit_industry_path(industry) %><%= link_to ' Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Industry', new_industry_path %>
+
+

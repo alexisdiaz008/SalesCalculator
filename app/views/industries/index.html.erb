@@ -1,22 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Industries</h1>
-
+<div class="row center" style="text-align:center;">
+  <h1>Industry Calculator</h1>
+<%= link_to 'Click to Add New Industry', new_industry_path %>
+</div>
+<br>
+<br>
+<br>
 <table>
   <thead>
     <tr>
-      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Name: <%= select_tag "Industries", options_for_select(@industry_names), id: "industry_names" %></th>
-      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Avg. Conversion rate</th>
-      <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Industry Options</th>
+      <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Number of views</th>
+      <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Industry Name: <%= select_tag "Industries", options_for_select(@industry_names), id: "industry_names" %></th>
+      <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Industry Avg. Conversion rate</th>
+      <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Mas Avg. Conversion Rate</th>
+      <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Industry Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @industries.each do |industry| %>
       <tr id="<%= industry.name %>" class="hidden">
-        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= industry.name %></td>
-        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= industry.conversion_rate %></td>
-        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><%= link_to 'Show', industry %><%= link_to ' Edit', edit_industry_path(industry) %><%= link_to ' Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= text_field_tag 'views', 'Enter # of views here.',id:"view_input" %></th>
+        <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= industry.name %></td>
+        <%= text_field_tag 'views', "#{industry.conversion_rate}" ,class:"hidden",id:"industry_conversion_rate",:disabled => true %>
+        <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ><%= text_field_tag 'views', "Industry Avg. Conversion Rate" ,id:"industry_conversion_input",:disabled => true %></td>
+        <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= text_field_tag 'views', 'Mas Avg. Conversion Rate',id:"mas_conversion_input",:disabled => true %></td>
+        <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= link_to 'Show', industry %><%= link_to ' Edit', edit_industry_path(industry) %><%= link_to ' Destroy', industry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,6 +34,5 @@
 
 <br>
 
-<%= link_to 'New Industry', new_industry_path %>
 
 

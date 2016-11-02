@@ -12,6 +12,20 @@
     <tr>
       <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Number of views</th>
       
+
+
+<th class="dropdown col-xs-3 col-sm-3 col-md-3 col-lg-3">
+  <button class="dropbtn">Choose an Industry:</button>
+  <div class="dropdown-content">
+    <ul id="industry_names">
+      <% @industries.each do |industry| %>
+        <li class="<%= industry.name %>"><%= industry.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</th>
+
+
       <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Industry Name: <%= select_tag "Industries", options_for_select(@industry_names, @industry_names.last ), id: "industry_names" %></th>
 
       <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Industry Avg. Conversion rate</th>

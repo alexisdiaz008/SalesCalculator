@@ -3,7 +3,6 @@ class IndustriesController < ApplicationController
 
   def index
     @industry_names = Industry.all.map(&:name)
-    @industry_names << "Industry"
     @industries = Industry.all
   end
 

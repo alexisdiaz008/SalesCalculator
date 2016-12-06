@@ -30,7 +30,7 @@
   <tbody>
     <% @industries.each do |industry| %>
       <tr id="<%= industry.name %>" class="hidden">
-        <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= text_field_tag 'views', 'Enter # of views here.',id:"#{industry.name}_view_input",class:"view_input" %></th>
+        <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= text_field_tag 'views', 'Enter # of views here.',id:"#{industry.name}_view_input",class:"#{industry.name}" %></th>
         <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><%= industry.name %></td>
         <%= text_field_tag 'views', "#{industry.conversion_rate}" ,class:"hidden",id:"#{industry.name}_industry_conversion_rate",:disabled => true %>
         <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ><%= text_field_tag 'views', "Industry Avg. Conversion Rate" ,id:"#{industry.name}_industry_conversion_input",:disabled => true %></td>
